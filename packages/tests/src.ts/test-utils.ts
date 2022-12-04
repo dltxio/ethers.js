@@ -552,6 +552,15 @@ describe('Test Bytes32String coder', function() {
     });
 });
 
+describe('Test Bytes16String coder', function() {
+    it("encodes a value as bytes16", function() {
+        let str = "Hello World";
+        let bytes16 = ethers.utils.formatBytes16String(str);
+        let str2 = ethers.utils.parseBytes16String(bytes16);
+        assert.equal(bytes16, '0x48656c6c6f20576f726c640000000000', 'formatted correctly');
+        assert.equal(str2, str, "parsed correctly");
+    });
+});
 
 function getHex(value: string): string {
     return ethers.utils.hexlify(ethers.utils.toUtf8Bytes(value));
